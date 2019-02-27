@@ -17,27 +17,58 @@
 		<div id="listarea">
 			<ul id="musiclist">
 				<?php 
+				function displaysongs(){
+					if (!isset($_REQUEST['playlist'])){
+						$files=glob("songs/*.mp3");
+						$valid=false;
+					}
+					else{
+						$files = file('songs/' . $_REQUEST['playlist'], FILE_IGNORE_NEW_LINES);
+						$valid=true;
+					}
+					foreach ($files as $file ) {
+						if (!$valid) {
+							$size = filesize($file);
+						  if ($size > 0 && $size < 1024){
+						  	$size = $size . " b";
+						  }
+						  elseif ($size > 1024 && $size < 1048575){
+						  	$size = round($size / 1024, 2) . " kb";
+						  }
+						  elseif ($size > 1048575){
+						  	$size = round($size / 1048575, 2) . " mb";
+						  }
+						}
+						else{
+							$size = filesize('songs/'.$file);
+						  if ($size > 0 && $size < 1024){
+						  	$size = $size . " b";
+						  }
+						  elseif ($size > 1024 && $size < 1048575){
+						  	$size = round($size / 1024, 2) . " kb";
+						  }
+						  elseif ($size > 1048575){
+						  	$size = round($size / 1048575, 2) . " mb";
+						  }
+						}
+						?>
+						 <li class="mp3item"><a href="songs/<?= basename($file) ?>">
+		  	<?= basename($file). " (" . $size . " )" ;?></a></li>
 
-					$files = glob("./songs/*.mp3");
-					foreach ($files as $filename) {
-
-				?>		
-					<li class="mp3item">
-						<a href="<?= $filename ?>">
-							<?= basename($filename) ?></a>
-						(<?= filesize($filename)  ?> b)
-					</li>
-				<?php } ?>
-
-				
-				
-				<li class="playlistitem">
-					<a href="music.php?playlist=mypicks.txt">mypicks.txt</a>
-				</li>
-
-				<li class="playlistitem">
-					<a href="music.php?playlist=playlist.txt">playlist.txt</a>
-				</li>
+						<?php 
+					}
+				}
+				function displaylists(){
+					$playlists=glob("songs/*.txt");
+					foreach($playlists as $playlist){
+				 		?>
+				 		<li class="playlistitem"><a href="music.php?playlist=<?=basename($playlist)?>"><?= basename($playlist);?></a></li>
+				 			<?php } 
+				 		}
+				 		displaysongs();
+				 		if(!isset($_REQUEST['playlist']))
+	  						displaylists();
+				 	?>
 			</ul>
 		</div>
 	</body>
