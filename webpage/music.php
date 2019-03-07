@@ -9,7 +9,7 @@
 	<body>
 		<div id="header">
 
-			<h1>190M Music Playlist Viewer</h1>
+			<h1>'190M Music' Playlist Viewer</h1>
 			<h2>Search Through Your Playlists and Music</h2>
 		</div>
 
