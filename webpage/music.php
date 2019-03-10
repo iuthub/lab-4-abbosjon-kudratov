@@ -5,6 +5,24 @@
 		<title>Music Viewer</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<link href="viewer.css" type="text/css" rel="stylesheet" />
+	
+	<style> 
+
+	
+#back{
+	margin-top: 10px;
+	background-color: #FFF;
+	border: 2px dotted blue;
+	text-align: center;
+	position: absolute;
+	bottom: 10px;
+	width: 95vw;	
+
+}
+
+img > .back{ display: block; }
+	</style>
+
 	</head>
 	<body>
 		<div id="header">
@@ -15,7 +33,10 @@
 
 
 		<div id="listarea">
-			<ul id="musiclist">
+
+					
+					<ul id="musiclist">
+				
 				<?php 
 				function displaysongs(){
 					if (!isset($_REQUEST['playlist'])){
@@ -71,5 +92,19 @@
 				 	?>
 			</ul>
 		</div>
+		
+	<?php if(isset($_REQUEST['playlist'])){ 
+				?>
+				<?=
+				' <a href="music.php"><img class="back" src="back.png" height="50" width="50">Go Back</a> '; ?>
+				<?php }
+				?>
+
+		<div id="back">
+			
+			<text>copyright (c) 2019</text>
+			<br />
+			<text> <a href="https://github.com/abbosjon-kudratov" target="_blank">Abbosjon Kudratov</a></text>	 
+			</div>
 	</body>
 </html>

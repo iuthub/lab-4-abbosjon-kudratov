@@ -33,6 +33,16 @@ li {
 	font-family: Verdana;
 }
 
+
+#back{
+	margin-top: 10px;
+	background-color: #FFF;
+	border: 2px dotted blue;
+
+}
+
+
+
 #listarea {
 	background-color: #DDEEFF;
 	border: 5px double blue;
@@ -57,3 +67,6 @@ ul {
 	margin-bottom: 0.5em;
 	margin-top: 0.5em;
 }
+
+
+img .back{ display: block; }
