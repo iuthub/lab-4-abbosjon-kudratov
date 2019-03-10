@@ -12,7 +12,7 @@
 #back{
 	margin-top: 10px;
 	background-color: #FFF;
-	border: 2px dotted blue;
+	border: 2px dashed blue;
 	text-align: center;
 	position: absolute;
 	bottom: 10px;
